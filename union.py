@@ -6,14 +6,11 @@
 # is a set, that is, it contains no
 # repeated elements.
 
-
-
 def union(a, b):
     for e in b:
         if e not in a:
             a.append(e)
     return a
-
 
 # To test, uncomment all lines
 # below except those beginning with >>>.
