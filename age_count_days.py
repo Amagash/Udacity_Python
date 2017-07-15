@@ -40,6 +40,8 @@ def countDaysSinceStartYear (day, month, year):
     return nbr_of_days
 
 def daysBetweenDates (year1, month1, day1, year2, month2, day2):
+    """This version assumes inputs are valid dates in Gregorian calendar, and the first date is not after the second."""
+
     return numberOfDaysBtwYear(year1, year2)- countDaysSinceStartYear(day1, month1, year1) + countDaysSinceStartYear(day2, month2, year2)
 
 
