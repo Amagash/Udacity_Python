@@ -39,6 +39,16 @@ def get_page(url):
         elif url == "http://www.udacity.com/cs101x/flying.html":
             return ('<html> <body> The magic words are Squeamish Ossifrage! '
             '</body> </html>')
+        elif url == "A1":
+            return '<a href="B1"> <a href="C1">  '
+        elif url == "B1":
+            return '<a href="E1">'
+        elif url == "C1":
+            return '<a href="D1">'
+        elif url == "D1":
+            return '<a href="E1"> '
+        elif url == "E1":
+            return '<a href="F1"> '
     except:
         return ""
     return ""
@@ -72,11 +82,12 @@ def crawl_web(seed, max_pages):
     tocrawl = [seed]
     crawled = []
     while tocrawl and len(crawled) < max_pages:
-        page = tocrawl.pop()
+        page = tocrawl.pop(0)
         if page not in crawled:
             union(tocrawl, get_all_links(get_page(page)))
             crawled.append(page)
     return crawled
+
 
 print crawl_web("http://www.udacity.com/cs101x/index.html",1)
 #>>> ['http://www.udacity.com/cs101x/index.html']
