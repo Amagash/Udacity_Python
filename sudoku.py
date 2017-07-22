@@ -8,13 +8,13 @@
 # For this question we will generalize
 # and simplify the game.
 
-Define a procedure, check_sudoku,
-that takes as input a square list
-of lists representing an n x n
-sudoku puzzle solution and returns the boolean
-True if the input is a valid
-sudoku square and returns the boolean False
-otherwise.
+# Define a procedure, check_sudoku,
+# that takes as input a square list
+# of lists representing an n x n
+# sudoku puzzle solution and returns the boolean
+# True if the input is a valid
+# sudoku square and returns the boolean False
+# otherwise.
 
 # A valid sudoku square satisfies these
 # two properties:
