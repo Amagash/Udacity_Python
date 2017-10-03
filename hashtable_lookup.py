@@ -12,6 +12,7 @@ def hashtable_lookup(htable,key):
     for entry in table:
         if key in entry:
             return entry[1]
+    return None
 
 def hashtable_add(htable,key,value):
     bucket = hashtable_get_bucket(htable,key)
