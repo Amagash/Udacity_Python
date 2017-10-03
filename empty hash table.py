@@ -11,3 +11,4 @@ def make_hashtable(nbuckets):
     return table
 
 print make_hashtable(1)
+
