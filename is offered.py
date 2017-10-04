@@ -79,9 +79,7 @@ def courses_offered(courses, hexamester):
 # to an error as your code will be graded as incorrect.
 
 def is_offered(courses, course, hexamester):
-    if course in courses[hexamester]:
-        return True
-    return False
+    return course in courses[hexamester]
 
 print is_offered(courses, 'cs101', 'apr2012')
 # >>> True
@@ -94,3 +92,20 @@ print is_offered(courses, 'cs001', 'jan2044')
 
 print is_offered(courses, 'cs253', 'feb2012')
 # >>> False
+
+# Define a procedure, when_offered(courses, course), that takes a courses data
+# structure and a string representing a class, and returns a list of strings
+# representing the hexamesters when the input course is offered.
+
+def when_offered(courses,course):
+    offered = []
+    for hexamester in courses:
+        if course in courses[hexamester]:
+            offered.append(hexamester)
+    return offered
+
+print when_offered (courses, 'cs101')
+#>>> ['apr2012', 'feb2012']
+
+print when_offered(courses, 'bio893')
+#>>> []
