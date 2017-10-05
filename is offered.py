@@ -44,7 +44,7 @@ courses = {
 }
 
 
-print courses['jan2044']['cs001']['name']
+# print courses['jan2044']['cs001']['name']
 # If you want to loop through the keys in the dictionary,
 # you can use the construct below.
 #         for <key> in <dictionary>:
@@ -81,17 +81,17 @@ def courses_offered(courses, hexamester):
 def is_offered(courses, course, hexamester):
     return course in courses[hexamester]
 
-print is_offered(courses, 'cs101', 'apr2012')
-# >>> True
-
-print is_offered(courses, 'cs003', 'apr2012')
-# >>> False
-
-print is_offered(courses, 'cs001', 'jan2044')
-# >>> True
-
-print is_offered(courses, 'cs253', 'feb2012')
-# >>> False
+# print is_offered(courses, 'cs101', 'apr2012')
+# # >>> True
+#
+# print is_offered(courses, 'cs003', 'apr2012')
+# # >>> False
+#
+# print is_offered(courses, 'cs001', 'jan2044')
+# # >>> True
+#
+# print is_offered(courses, 'cs253', 'feb2012')
+# # >>> False
 
 # Define a procedure, when_offered(courses, course), that takes a courses data
 # structure and a string representing a class, and returns a list of strings
@@ -104,8 +104,60 @@ def when_offered(courses,course):
             offered.append(hexamester)
     return offered
 
-print when_offered (courses, 'cs101')
+# print when_offered (courses, 'cs101')
 #>>> ['apr2012', 'feb2012']
 
-print when_offered(courses, 'bio893')
+# print when_offered(courses, 'bio893')
 #>>> []
+
+# [Double Gold Star] Define a procedure, involved(courses, person), that takes
+# as input a courses structure and a person and returns a Dictionary that
+# describes all the courses the person is involved in.  A person is involved
+# in a course if they are a value for any property for the course.  The output
+# Dictionary should have hexamesters as its keys, and each value should be a
+# list of courses that are offered that hexamester (the courses in the list
+# can be in any order).
+
+
+
+def involved(courses, person):
+    dictionary = {}
+    for hexamester in courses:
+        listlesson = []
+        for lesson in courses[hexamester]:
+            for value in courses[hexamester][lesson]:
+                if courses[hexamester][lesson][value] == person:
+                    listlesson.append(lesson)
+        if listlesson != []:
+            dictionary[hexamester] = listlesson
+    return dictionary
+
+# elements = {}
+# elements['H'] = {'name': 'Hydrogen', 'number': 1, 'weight': 1.00794}
+# elements['He'] = {'name': 'Helium', 'number': 2, 'weight': 4.002602, 'noble gas': True}
+#
+# print elements
+# print elements['H']
+# print elements['He']['noble gas']
+
+
+
+# For example:
+
+print involved(courses, 'Dave')
+#>>> {'apr2012': ['cs101', 'cs387'], 'feb2012': ['cs101']}
+
+print involved(courses, 'Peter C.')
+#>>> {'apr2012': ['cs262'], 'feb2012': ['cs101']}
+
+print involved(courses, 'Dorina')
+#>>> {'jan2044': ['cs001']}
+
+print involved(courses,'Peter')
+#>>> {}
+
+print involved(courses,'Robotic')
+#>>> {}
+
+print involved(courses, '')
+#>>> {}
