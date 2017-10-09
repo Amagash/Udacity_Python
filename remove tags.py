@@ -9,31 +9,39 @@
 # You may assume the input does not include any unclosed tags, that is,
 # there will be no '<' without a following '>'.
 
-def find_tag(page):
-    start_tag = page.find('<')
-    end_tag = page.find('>', start_tag)
-    tag = page[start_tag:end_tag + 1]
-    return tag, end_tag
+# def find_tag(page):
+#     start_tag = page.find('<')
+#     end_tag = page.find('>', start_tag)
+#     tag = page[start_tag:end_tag + 1]
+#     return tag, end_tag
+#
+# def get_all_tags(page):
+#     tags = []
+#     n = 0
+#     while n <= len(page):
+#         tag, end_tag = find_tag(page)
+#         if tag:
+#             tags.append(tag)
+#             page = page[end_tag:]
+#             n = n + 1
+#     return tags
+#
+# def remove_tags(page):
+#     if '<' not in page:
+#         return page.split()
+#     new_page = ''
+#     for tag in get_all_tags(page):
+#         new_page = page.replace(tag, ' ', 1)
+#         page = new_page
+#     return new_page.split()
 
-def get_all_tags(page):
-    tags = []
-    n = 0
-    while n <= len(page):
-        tag, end_tag = find_tag(page)
-        if tag:
-            tags.append(tag)
-            page = page[end_tag:]
-            n = n + 1
-    return tags
-
-def remove_tags(page):
-    if '<' not in page:
-        return page.split()
-    new_page = ''
-    for tag in get_all_tags(page):
-        new_page = page.replace(tag, ' ', 1)
-        page = new_page
-    return new_page.split()
+def remove_tags(string):
+    start = string.find('<')
+    while start != -1:
+        end = string.find('>', start)
+        string = string[:start] + " " + string[end + 1:]
+        start = string.find('<')
+    return string.split()
 
 print remove_tags('''<h1>Title</h1><p>This is a
                     <a href="http://www.udacity.com">link</a>.<p>''')
