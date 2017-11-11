@@ -155,12 +155,5 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-.gitignore
 .idea/
 .directory
-Choco.csv
-csv reader writer.py
-outChoco.csv
-turnstile_110507.txt
-updated_turnstile_110507.txt
-wrangling subway data.py
